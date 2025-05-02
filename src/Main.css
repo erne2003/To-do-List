@@ -1,0 +1,32 @@
+.Main{
+    position: relative;
+    right:170px
+   }
+   /* Container Styling */
+   .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    outline-width: 3px;
+    outline-style: solid;
+    outline-color: rgb(0, 0, 0);
+    width: fit-content; /* Container expands based on its content */
+    max-width:max-content; /* Maximum width for the container */
+    min-width: 300px; /* Minimum width */
+    height: auto; /* Height adjusts based on content */
+    position: relative;
+    margin: 90px auto; /* Center the container horizontally */
+    left: 0; /* Start at the left edge */
+  }
+  /* Navigation Styling */
+  .Navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 100%; /* Full width for navigation */
+    position: relative;
+    margin-top: 60px;
+  }
+  

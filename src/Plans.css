@@ -1,0 +1,45 @@
+
+.Plans{
+    height:662.4px;
+    width: 100vw;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    justify-content: center;
+}
+.Plan-Title{
+    display: flex;
+    position: relative;
+    left: 490px;
+    top: 50px;
+}
+.Plans-Container{
+    display: flex;
+    vertical-align: center;
+    flex-direction: column;
+   border: 3px solid black;
+   align-content: center;
+   justify-content: center;
+   position: relative;
+   left: 520px;
+   top: 90px;
+   width: fit-content;
+}
+
+.Plans-Content{
+    display: flex;
+    justify-content: center;
+    border: 1.5px solid black;
+   margin-top: 10px;
+   margin-bottom: 10px;
+   width: fit-content;
+   height: fit-content;
+   position: relative;
+   align-content: center;
+   padding: 3px;
+   margin-left: 20px;
+   margin-right: 20px;
+}
+.input{
+    border-width: 0;
+    border: 0px white;
+}
