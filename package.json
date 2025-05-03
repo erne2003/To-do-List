@@ -2,6 +2,7 @@
   "name": "to-do-list",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://erne2003.github.io/To-do-List",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
