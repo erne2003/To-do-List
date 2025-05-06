@@ -1,47 +1,51 @@
+/* Sidebar styles */
 .sidebar {
-    height: 100%;
-    width: 250px;
-    position: fixed;
-    top: 0;
-    left: -250px; /* Initially hide the sidebar off-screen */
-    background-color: #111;
-    color: white;
-    transition: left 0.3s ease; /* Smooth transition for sliding in */
-    padding-top: 60px;
-    z-index: 9999; /* Ensure it appears above other content */
-  }
-  
-  .sidebar.visible {
-    left: 0; /* Slide in from the left when visible */
-  }
-  
-  .sidebar a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: white;
-    display: block;
-    transition: 0.3s;
-  }
-  
-  .sidebar a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  /* Sidebar visibility */
-  .sidebar:hover {
-    left: 0; /* Show sidebar when hovering over it */
-  }
-  
-  /* Sidebar trigger area */
-  .sidebar-trigger {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 40px; /* Small area to detect hover */
-    height: 100%;
-    z-index: 9998; /* Ensure it is above other content but below the sidebar */
-    background-color: transparent; /* Invisible */
-  }
-  
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: -250px; /* Initially hide the sidebar off-screen */
+  background-color: #111;
+  color: white;
+  transition: left 0.3s ease; /* Smooth transition for sliding in */
+  padding-top: 60px;
+  z-index: 9999; /* Ensure it appears above other content */
+}
+
+/* Sidebar when visible */
+.sidebar.visible {
+  left: 0; /* Slide in from the left when visible */
+}
+
+/* Links inside the sidebar */
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+/* Hover effect for links */
+.sidebar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Sidebar trigger area */
+.sidebar-trigger {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px; /* Small area to detect hover */
+  height: 100%;
+  z-index: 9998; /* Ensure it is above other content but below the sidebar */
+  background-color: transparent; /* Invisible */
+}
+
+/* Optional: Add a visible area when hovering over the trigger */
+.sidebar-trigger:hover {
+  background-color: rgba(0, 0, 0, 0.3); /* Slight background when hovering over trigger */
+  cursor: pointer;
+}
