@@ -3,7 +3,14 @@ import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
 import './Plans.css'; // Importing CSS for styling
 
 const Plans = () => {
+  class Plan{
+    constructor(name) {
+      this.name = name;
+      this.TaskList = [];
+    }
+  }
   const [planList, setPlanList] = useState([]);
+  const [TaskList, setTaskList] = useState([]);
   const [planInput1, setPlanInput1] = useState("");
   const [planInput2, setPlanInput2] = useState("");
   const [planInput3, setPlanInput3] = useState("");
