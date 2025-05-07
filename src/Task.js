@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./Task.css"; // Ensure the path is correct
-
+import Plans from "./Plans"; // Import Plans component
 const Task = () => {
   const [tasks, setTasks] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [selectedPlan, setSelectedPlan] = useState("Plan1"); // State to track the selected plan
+  const [plans, setPlans] = useState([]);
 
+  useEffect(() => {
+    const saved = localStorage.getItem("plans");
+    if (saved) {
+      setPlans(JSON.parse(saved));
+    }
+  }, []);
   // Handle input field change
   const getInput = (event) => {
     setInputValue(event.target.value);
@@ -51,10 +58,19 @@ const Task = () => {
     <div className="Task">
       <h1 className="title">To-Do List</h1>
       <div className="Plan-Navigation">
-        <button style={{backgroundColor:"white", border:"0px", width:"fit-content", height:"fit-content",}}><div style={{marginRight:"20px"}}className="Plan-Navigation-Content">Plan1</div></button>
-        <button style={{backgroundColor:"white", border:"0px", width:"fit-content", height:"fit-content",}}><div style={{marginRight:"20px"}}className="Plan-Navigation-Content">Plan2</div></button>
-        <button style={{backgroundColor:"white", border:"0px", width:"fit-content", height:"fit-content",}}><div style={{marginRight:"20px"}}className="Plan-Navigation-Content">Plan3</div></button>
-        <button style={{backgroundColor:"white", border:"0px", width:"fit-content", height:"fit-content",}}><div style={{marginRight:"20px"}}className="Plan-Navigation-Content">Plan4</div></button>
+        <ul style={{ display: "flex" }}>
+          {plans.map((plan, index) => (
+            <li key={index}>
+              <button
+                className={"Navigation-Plans"}
+                onClick={() => setSelectedPlan(`Plan${index + 1}`)}
+                style={{backgroundColor: "white", }}
+              >
+                {plan}
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
 
       <div className="Navigation">
@@ -70,7 +86,7 @@ const Task = () => {
       </div>
 
       <div className="container">
-        <div className="Task">
+        <div className="TaskList">
           <ul>{getTasks()}</ul>
         </div>
       </div>
@@ -84,3 +100,4 @@ const Task = () => {
 };
 
 export default Task;
+

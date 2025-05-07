@@ -9,6 +9,9 @@ input[type="checkbox"] {
     -moz-appearance: none;      /* Remove default checkbox appearance (Firefox) */
     transition: all 0.3s ease;  /* Smooth transition for state changes */
     border-radius: 2.5px;
+    justify-content: flex-start;
+    align-items: left;
+    margin-left: 10px;
   }
   
   /* When the checkbox is checked */
@@ -29,7 +32,11 @@ input[type="checkbox"] {
   }
   #Task-text{
     position: relative;
-    bottom: 7px;
+    justify-content: flex-start;
+    text-align: left;
+    bottom: 3px;
+    margin-right: 10px;
+    margin-left: 10px;
   }
   .Space-between-tasks{
     margin-top: 7px;
@@ -41,18 +48,34 @@ input[type="checkbox"] {
     margin-left: 50px;
     padding-right: 20px;
     position: relative; /* Position relative for absolute children */
-    right: 2
+    left: 100px; /* Start at the left edge */
   }
   .Plan-Navigation{
     position: relative;
     left: 505px;
     top: 40px;
     display: flex;
-   
+    margin-bottom: 2rem;
   }
   .Plan-Navigation-Content:hover{
  border-bottom: 3px solid #000;
  transition-duration: 0.1s;
  cursor: pointer;
   }
+  .Navigation-Plans {
+    display: inline-block;       /* ensure the underline hugs just the text */
+    background-color: white;
+    border: none;                /* default: no box border */
+    padding: 0.25rem 0.5rem;
+    transition: border-color 0.2s ease;
+  }
   
+  .Navigation-Plans:hover {
+    border-bottom: 2px solid #333;  /* now you’ll see the underline */
+    cursor: pointer;
+  }
+  .Navigation{
+    position: relative; 
+    bottom: 30px;
+  }
+ 

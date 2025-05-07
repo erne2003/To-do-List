@@ -18,6 +18,8 @@
     position: relative;
     margin: 90px auto; /* Center the container horizontally */
     left: 0; /* Start at the left edge */
+    padding-right: fit-content; /* Add padding to the right */
+    
   }
   /* Navigation Styling */
   .Navigation {
