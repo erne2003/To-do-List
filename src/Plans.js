@@ -1,75 +1,90 @@
 import React, { useState, useEffect } from "react";
-import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
 import "./Plans.css";
 
+// Simple Plan class
+export class Plan {
+  constructor(name, taskList = []) {
+    this.name = name;
+    this.taskList = taskList;
+  }
+}
+
 const Plans = () => {
-  // 1. Initialize from localStorage (or empty array)
+  // Load + rehydrate from localStorage
   const [planList, setPlanList] = useState(() => {
-    const saved = localStorage.getItem("plans");
-    return saved ? JSON.parse(saved) : [];
+    const raw = localStorage.getItem("plans");
+    if (!raw) return [];
+    try {
+      const arr = JSON.parse(raw);
+      return arr.map(p => new Plan(p.name, p.taskList || []));
+    } catch {
+      return [];
+    }
   });
 
-  // 2. Inputs for each of the four slots
-  const [planInput1, setPlanInput1] = useState("");
-  const [planInput2, setPlanInput2] = useState("");
-  const [planInput3, setPlanInput3] = useState("");
-  const [planInput4, setPlanInput4] = useState("");
-
-  // 3. Persist planList whenever it changes
+  // Persist name+taskList whenever planList changes
   useEffect(() => {
-    localStorage.setItem("plans", JSON.stringify(planList));
+    const toSave = planList.map(p => ({
+      name: p.name,
+      taskList: p.taskList
+    }));
+    localStorage.setItem("plans", JSON.stringify(toSave));
   }, [planList]);
 
-  // 4. Add or replace a plan at slot `index`
-  const addPlan = (index, inputValue, setter) => {
-    if (!inputValue.trim()) return;
-    const updated = [...planList];
-    if (index === planList.length) {
-      updated.push(inputValue);
-    } else {
-      updated[index] = inputValue;
-    }
-    setPlanList(updated);
-    setter("");
+  // Four input slots for adding plans
+  const [inputs, setInputs] = useState(["", "", "", ""]);
+
+  const addPlan = index => {
+    const name = inputs[index].trim();
+    if (!name) return;
+    const newP = new Plan(name);
+    setPlanList(pls => {
+      const copy = [...pls];
+      copy[index] = newP;
+      return copy;
+    });
+    setInputs(inp => {
+      const c = [...inp];
+      c[index] = "";
+      return c;
+    });
   };
 
-  // 5. Remove the plan at slot `index`
-  const clearPlan = (index) => {
-    const updated = [...planList];
-    updated.splice(index, 1);
-    setPlanList(updated);
+  const clearPlan = index => {
+    setPlanList(pls => {
+      const copy = [...pls];
+      copy.splice(index, 1);
+      return copy;
+    });
   };
 
-  // Helper to render one slot
-  const renderSlot = (index, inputValue, setter) => {
-    const hasPlan = planList[index] != null;
+  const renderSlot = index => {
+    const plan = planList[index];
     return (
-      <div className={`Plan-${index + 1}`}>
+      <div key={index} className={`Plan-${index + 1}`}>
         <div className="Plans-Content">
-          {hasPlan ? (
-            <span>{planList[index]}</span>
+          {plan ? (
+            <>
+              <h3>{plan.name}</h3>
+            </>
           ) : (
             <input
               type="text"
-              placeholder={`Plan #${index + 1}`}
-              value={inputValue}
-              onChange={(e) => setter(e.target.value)}
+              placeholder={`Enter plan #${index + 1} name`}
+              value={inputs[index]}
+              onChange={e => {
+                const c = [...inputs];
+                c[index] = e.target.value;
+                setInputs(c);
+              }}
             />
           )}
           <button
             className="Add-Plan"
-            onClick={() =>
-              hasPlan
-                ? clearPlan(index)
-                : addPlan(index, inputValue, setter)
-            }
-            style={{
-              border: "none",
-              cursor: "pointer",
-              background: "none",
-            }}
+            onClick={() => (plan ? clearPlan(index) : addPlan(index))}
+            style={{ border: "none", cursor: "pointer", background: "none" }}
           >
-            {hasPlan ? <FaMinusCircle /> : <FaPlusCircle />}
+            {plan ? "Remove Plan" : "Add Plan"}
           </button>
         </div>
       </div>
@@ -82,10 +97,7 @@ const Plans = () => {
         <h1>Plans Screen</h1>
       </div>
       <div className="Plans-Container">
-        {renderSlot(0, planInput1, setPlanInput1)}
-        {renderSlot(1, planInput2, setPlanInput2)}
-        {renderSlot(2, planInput3, setPlanInput3)}
-        {renderSlot(3, planInput4, setPlanInput4)}
+        {[0, 1, 2, 3].map(renderSlot)}
       </div>
     </div>
   );

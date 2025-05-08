@@ -5,8 +5,7 @@ input[type="checkbox"] {
     border: 2px solid #333;     /* Set border color */
     cursor: pointer;           /* Make the checkbox clickable */
     position: relative;         /* Position relative to add checkmark */
-    -webkit-appearance: none;   /* Remove default checkbox appearance (Safari/Chrome) */
-    -moz-appearance: none;      /* Remove default checkbox appearance (Firefox) */
+      /* Remove default checkbox appearance (Firefox) */
     transition: all 0.3s ease;  /* Smooth transition for state changes */
     border-radius: 2.5px;
     justify-content: flex-start;
@@ -52,10 +51,11 @@ input[type="checkbox"] {
   }
   .Plan-Navigation{
     position: relative;
-    left: 505px;
-    top: 40px;
+    left: 572px;
+    top: 20px;
     display: flex;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    justify-content: left;
   }
   .Plan-Navigation-Content:hover{
  border-bottom: 3px solid #000;

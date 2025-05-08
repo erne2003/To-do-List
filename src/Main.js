@@ -7,9 +7,6 @@ const Main = () => {
   return (
     <div className="Main">
       {/* Render the Task component */}
-      <div className="Plan-Navigation">
-        
-      </div>
       <Task />
     </div>
   );

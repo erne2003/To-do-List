@@ -47,5 +47,5 @@
 /* Optional: Add a visible area when hovering over the trigger */
 .sidebar-trigger:hover {
   background-color: rgba(0, 0, 0, 0.3); /* Slight background when hovering over trigger */
-  cursor: pointer;
+ 
 }
