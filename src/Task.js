@@ -1,3 +1,4 @@
+// Task.js
 import React, { useState, useEffect } from "react";
 import "./Task.css";
 import { Plan } from "./Plans"; // Import the Plan class
@@ -94,8 +95,12 @@ const Task = () => {
 
   return (
     <div className="TaskScreen">
-      <h1 className="title" style={{ fontSize:"50px", position:"relative", top:"90px"
-      }}>To-Do List</h1>
+      <h1
+        className="title"
+        style={{ fontSize: "50px", position: "relative", top: "90px" }}
+      >
+        To-Do List
+      </h1>
 
       {/* Plan selector */}
       <div className="Plan-Navigation">
@@ -106,8 +111,7 @@ const Task = () => {
                 className="Navigation-Plans"
                 onClick={() => setSelectedPlan(plan.name)}
                 style={{
-
-                    borderBottom:
+                  borderBottom:
                     plan.name === selectedPlan ? "2px solid #000" : "white"
                 }}
               >
@@ -119,20 +123,25 @@ const Task = () => {
       </div>
 
       {/* New task input */}
-      <div className="Navigation" >
+      <div className="Navigation">
         <input
+          style={{ width: "310px", height: "30px", padding: "0px" }}
           type="text"
           value={inputValue}
           onChange={getInput}
           placeholder="Enter a task"
         />
-        <button className="Task-Function" onClick={addTask}>
+        <button
+          className="Task-Function"
+          onClick={addTask}
+          style={{ width: "80px", height: "30px", fontSize: "14px", backgroundColor: "#3B82F6" }}
+        >
           Add Task
         </button>
       </div>
 
       {/* Task list for the current plan */}
-      <div className="container">
+      <div className="container" hidden={!selectedPlan}>
         <div className="TaskList">
           <ul>{getTasks()}</ul>
         </div>

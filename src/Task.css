@@ -75,8 +75,15 @@ input[type="checkbox"]:checked::after {
 .Navigation{
   position: relative;
   top:-30px;
+  border-radius: 0px;
 }
 .container{
   position:r relative;
   top :-100px;
+}
+.Task-Function{
+  background-color:rgb(59, 130, 246);
+  border-radius: 1.5px;
+  border-width: 0.5px;
+  border-color: rgb(59, 130, 246);;
 }

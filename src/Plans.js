@@ -74,7 +74,7 @@ const Plans = () => {
               <h3>{plan.name}</h3>
             </>
           ) : (
-            <input
+            <input style={{width:'300px', height:'40px', position:'relative',}}
               type="text"
               placeholder={`Enter plan #${index + 1} name`}
               value={inputs[index]}
