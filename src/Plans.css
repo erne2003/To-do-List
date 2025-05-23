@@ -2,9 +2,11 @@
 .Plans{
     height:662.4px;
     width: 100vw;
-    background-color: rgb(255, 255, 255);
     position: relative;
     justify-content: center;
+     /* pale peach → soft pink */
+  background: linear-gradient(180deg, #fff3e0 0%, #fce4ec 100%);
+  min-height: 100vh;
 }
 .Plan-Title{
     display: flex;
@@ -20,7 +22,7 @@
    align-content: center;
    justify-content: center;
    position: relative;
-   left: 520px;
+   left: 435px;
    top: 90px;
    width: fit-content;
 }

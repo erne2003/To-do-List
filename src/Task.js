@@ -93,8 +93,9 @@ const Task = () => {
     ));
 
   return (
-    <div className="Task">
-      <h1 className="title">To-Do List</h1>
+    <div className="TaskScreen">
+      <h1 className="title" style={{ fontSize:"50px", position:"relative", top:"90px"
+      }}>To-Do List</h1>
 
       {/* Plan selector */}
       <div className="Plan-Navigation">
@@ -105,8 +106,9 @@ const Task = () => {
                 className="Navigation-Plans"
                 onClick={() => setSelectedPlan(plan.name)}
                 style={{
-                  backgroundColor:
-                    plan.name === selectedPlan ? "#eee" : "white"
+
+                    borderBottom:
+                    plan.name === selectedPlan ? "2px solid #000" : "white"
                 }}
               >
                 {plan.name}
@@ -117,14 +119,14 @@ const Task = () => {
       </div>
 
       {/* New task input */}
-      <div className="Navigation">
+      <div className="Navigation" >
         <input
           type="text"
           value={inputValue}
           onChange={getInput}
           placeholder="Enter a task"
         />
-        <button id="Task-Function" onClick={addTask}>
+        <button className="Task-Function" onClick={addTask}>
           Add Task
         </button>
       </div>

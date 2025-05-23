@@ -1,6 +1,12 @@
 .Main{
-    position: relative;
-    right:170px
+  position: relative;
+  right:0px;
+  background: linear-gradient(135deg, #e0f7fa 0%, #e3f2fd 100%);
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
    }
    /* Container Styling */
    .container {
@@ -8,7 +14,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    outline-width: 3px;
+    outline-width: 1.5px;
     outline-style: solid;
     outline-color: rgb(0, 0, 0);
     width: fit-content; /* Container expands based on its content */

@@ -10,29 +10,35 @@ export class Plan {
 }
 
 const Plans = () => {
-  // Load + rehydrate from localStorage
+  // Load + rehydrate from localStorage, ensuring exactly 4 slots
   const [planList, setPlanList] = useState(() => {
     const raw = localStorage.getItem("plans");
-    if (!raw) return [];
-    try {
-      const arr = JSON.parse(raw);
-      return arr.map(p => new Plan(p.name, p.taskList || []));
-    } catch {
-      return [];
+    let arr = [];
+    if (raw) {
+      try {
+        arr = JSON.parse(raw).map(p => new Plan(p.name, p.taskList || []));
+      } catch {
+        arr = [];
+      }
     }
+    // Ensure fixed length of 4
+    const slots = Array(4).fill(null);
+    arr.forEach((p, i) => {
+      if (i < 4) slots[i] = p;
+    });
+    return slots;
   });
 
-  // Persist name+taskList whenever planList changes
+  // Persist only real plans (no nulls) whenever planList changes
   useEffect(() => {
-    const toSave = planList.map(p => ({
-      name: p.name,
-      taskList: p.taskList
-    }));
+    const toSave = planList
+      .filter(p => p !== null)
+      .map(p => ({ name: p.name, taskList: p.taskList }));
     localStorage.setItem("plans", JSON.stringify(toSave));
   }, [planList]);
 
   // Four input slots for adding plans
-  const [inputs, setInputs] = useState(["", "", "", ""]);
+  const [inputs, setInputs] = useState(Array(4).fill(""));
 
   const addPlan = index => {
     const name = inputs[index].trim();
@@ -53,7 +59,7 @@ const Plans = () => {
   const clearPlan = index => {
     setPlanList(pls => {
       const copy = [...pls];
-      copy.splice(index, 1);
+      copy[index] = null;    // clear that slot without reshaping array
       return copy;
     });
   };

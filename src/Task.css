@@ -1,81 +1,82 @@
-input[type="checkbox"] {
-    width: 20px;                /* Set width of checkbox */
-    height: 20px;               /* Set height of checkbox */
-    background-color: #fff;     /* Set background color */
-    border: 2px solid #333;     /* Set border color */
-    cursor: pointer;           /* Make the checkbox clickable */
-    position: relative;         /* Position relative to add checkmark */
-      /* Remove default checkbox appearance (Firefox) */
-    transition: all 0.3s ease;  /* Smooth transition for state changes */
-    border-radius: 2.5px;
-    justify-content: flex-start;
-    align-items: left;
-    margin-left: 10px;
-  }
-  
-  /* When the checkbox is checked */
-  input[type="checkbox"]:checked {
-    background-color: rgb(76, 193, 74);  /* Green background when checked */
-    border-color: rgb(76, 193, 74);      /* Change border color when checked */
-  }
-  
-  /* Add a checkmark inside the checkbox when checked */
-  input[type="checkbox"]:checked::after {
-    content: '✔';               /* Display a checkmark */
-    color: white;               /* Set checkmark color */
-    font-size: 16px;            /* Adjust font size */
-    position: relative;   
-    align-content: center;             /* Position checkmark inside checkbox */
-    bottom: 3.8px;             /* Adjust vertical position */
-    left: 1.5px;              /* Adjust horizontal position */
-  }
-  #Task-text{
-    position: relative;
-    justify-content: flex-start;
-    text-align: left;
-    bottom: 3px;
-    margin-right: 10px;
-    margin-left: 10px;
-  }
-  .Space-between-tasks{
-    margin-top: 7px;
-    margin-bottom: 7px;
-  }
-  /* Sidebar styles */
-  /* Task Styling */
-.Task {
-    margin-left: 50px;
-    padding-right: 20px;
-    position: relative; /* Position relative for absolute children */
-    left: 100px; /* Start at the left edge */
-  }
-  .Plan-Navigation{
-    position: relative;
-    left: 572px;
-    top: 20px;
-    display: flex;
-    margin-bottom: 3rem;
-    justify-content: left;
-  }
-  .Plan-Navigation-Content:hover{
- border-bottom: 3px solid #000;
- transition-duration: 0.1s;
- cursor: pointer;
-  }
-  .Navigation-Plans {
-    display: inline-block;       /* ensure the underline hugs just the text */
-    background-color: white;
-    border: none;                /* default: no box border */
-    padding: 0.25rem 0.5rem;
-    transition: border-color 0.2s ease;
-  }
-  
-  .Navigation-Plans:hover {
-    border-bottom: 2px solid #333;  /* now you’ll see the underline */
-    cursor: pointer;
-  }
-  .Navigation{
-    position: relative; 
-    bottom: 30px;
-  }
+/* 1) Make root containers fill the viewport */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2) Fullscreen background on your Task (Home) screen */
+.TaskScreen {
+  width: 100vw;
+  min-height: 100vh;
  
+}
+
+/* 3) Inner task-list padding and spacing */
+.TaskScreen .Task-controls,
+.TaskScreen .Task-list {
+  padding: 20px;
+}
+
+/* 4) Checkbox styling */
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #333;
+  cursor: pointer;
+  border-radius: 2.5px;
+  transition: all 0.2s ease;
+  margin-left: 10px;
+}
+
+input[type="checkbox"]:checked {
+  background-color: rgb(76, 193, 74); /* Change background color */
+  border-color: rgb(76, 193, 74); /* Change border color */
+   accent-color: rgb(76, 193, 74);
+}
+
+input[type="checkbox"]:checked::after {
+  content: ''; /* Ensure pseudo-element content */
+  display: inline-block; /* Ensure it's displayed */
+  width: 10px; /* Adjust width */
+  height: 10px; /* Adjust height */
+  position: relative;
+  bottom: 3.8px;
+  left: 1.5px;
+}
+/* 5) Task text and spacing */
+#Task-text {
+  text-align: left;
+  margin: 0 10px 0 10px;
+  position: relative;
+  bottom: 3px;
+}
+.Space-between-tasks {
+  margin: 7px 0;
+}
+
+/* 6) Plan navigation tweaks */
+.Plan-Navigation {
+  display: flex;
+  justify-content: flex-start;
+  margin: 120px 0 3rem 572px;
+}
+.Navigation-Plans {
+  display: inline-block;
+  background-color: white;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  transition: border-bottom 0.2s ease;
+}
+.Navigation-Plans:hover {
+  border-bottom: 2px solid #333;
+  cursor: pointer;
+}
+.Navigation{
+  position: relative;
+  top:-30px;
+}
+.container{
+  position:r relative;
+  top :-100px;
+}

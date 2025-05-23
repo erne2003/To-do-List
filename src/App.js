@@ -7,6 +7,7 @@ import Main from './Main';         // Main component that handles tasks and the 
 import Plans from './Plans';       // The Plans screen component
 import About from './About';       // The About screen component
 import Contact from './Contact';   // The Contact screen component
+import Task from "./Task";
 
 function App() {
   // ─── Lift planList state into App ─────────────────────────────────────
@@ -27,7 +28,7 @@ function App() {
         {/* Sidebar with Links for navigation */}
         <SideBar />
 
-        <div style={{ marginLeft: "0px", marginBottom: "0px", marginTop: "-30px" }}>
+        <div style={{ marginLeft: "0px", marginBottom: "0px", marginTop: "-50px" }}>
           {/* Define Routes for different screens */}
           <Routes>
             {/* Pass planList into Main (Task screen) */}
