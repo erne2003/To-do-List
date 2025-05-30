@@ -8,6 +8,7 @@ import Plans from './Plans';       // The Plans screen component
 import About from './About';       // The About screen component
 import Contact from './Contact';   // The Contact screen component
 import Task from "./Task";
+import SignIn from "./SignIn";     // SignIn component for user authentication
 
 function App() {
   // ─── Lift planList state into App ─────────────────────────────────────
@@ -15,6 +16,12 @@ function App() {
     const saved = localStorage.getItem("plans");
     return saved ? JSON.parse(saved) : [];
   });
+
+  const [signedIn, setSignedIn] = useState(false);
+
+  const handleSignIn = (value) => {
+    setSignedIn(value);
+  };
 
   // Persist whenever planList changes
   useEffect(() => {
@@ -24,32 +31,36 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
-        {/* Sidebar with Links for navigation */}
-        <SideBar />
+      {!signedIn ? (
+        <SignIn onSignIn={handleSignIn} />
+      ) : (
+        <div className="App">
+          {/* Sidebar with Links for navigation */}
+          <SideBar />
 
-        <div style={{ marginLeft: "0px", marginBottom: "0px", marginTop: "-50px" }}>
-          {/* Define Routes for different screens */}
-          <Routes>
-            {/* Pass planList into Main (Task screen) */}
-            <Route path="/" element={<Main planList={planList} />} />
+          <div style={{ marginLeft: "0px", marginBottom: "0px", marginTop: "-50px" }}>
+            {/* Define Routes for different screens */}
+            <Routes>
+              {/* Pass planList into Main (Task screen) */}
+              <Route path="/" element={<Main planList={planList} />} />
 
-            {/* Give Plans both the array and its setter */}
-            <Route
-              path="/plans"
-              element={
-                <Plans
-                  planList={planList}
-                  setPlanList={setPlanList}
-                />
-              }
-            />
+              {/* Give Plans both the array and its setter */}
+              <Route
+                path="/plans"
+                element={
+                  <Plans
+                    planList={planList}
+                    setPlanList={setPlanList}
+                  />
+                }
+              />
 
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </div>
         </div>
-      </div>
+      )}
     </Router>
   );
 }

@@ -1,0 +1,39 @@
+.CreateAccount{
+    position: relative;
+    left:580px;
+    top: 200px;
+    background:none;
+    color: blue;
+    border: none;
+}
+.CreateAccount:hover{
+    color: lightblue;
+    cursor: pointer;
+}
+.SignIn-Submit{
+    position: relative;
+    min-width: 60px;
+    width: fit-content;
+    min-height: 30px;
+    height: fit-content;
+    background-color: #89CFF0;
+    border: none;
+    border-radius: 3px;
+    left: 110px;
+    top: 30px;
+}
+.CreateAccount-Submit{
+    position: relative;
+    min-width: 60px;
+    width: fit-content;
+    min-height: 30px;
+    height: fit-content;
+    background-color: #89CFF0;
+    border: none;
+    border-radius: 3px;
+    left: 55px;
+    top: 30px;
+}
+.SignIn-Submit:hover{
+    cursor: pointer;
+}

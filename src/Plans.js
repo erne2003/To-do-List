@@ -22,9 +22,9 @@ const Plans = () => {
       }
     }
     // Ensure fixed length of 4
-    const slots = Array(4).fill(null);
+    const slots = Array(10).fill(null);
     arr.forEach((p, i) => {
-      if (i < 4) slots[i] = p;
+      if (i < 10) slots[i] = p;
     });
     return slots;
   });
@@ -103,7 +103,7 @@ const Plans = () => {
         <h1>Plans Screen</h1>
       </div>
       <div className="Plans-Container">
-        {[0, 1, 2, 3].map(renderSlot)}
+        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(renderSlot)}
       </div>
     </div>
   );

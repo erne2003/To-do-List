@@ -141,7 +141,10 @@ const Task = () => {
       </div>
 
       {/* Task list for the current plan */}
-      <div className="container" hidden={!selectedPlan}>
+      <div
+        className="container"
+style={selectedPlan==='' ? {} : { border: "none" }}
+      >
         <div className="TaskList">
           <ul>{getTasks()}</ul>
         </div>

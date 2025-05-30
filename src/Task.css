@@ -58,7 +58,9 @@ input[type="checkbox"]:checked::after {
 /* 6) Plan navigation tweaks */
 .Plan-Navigation {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  position: relative;
+  right: 300px;
   margin: 120px 0 3rem 572px;
 }
 .Navigation-Plans {
@@ -86,4 +88,8 @@ input[type="checkbox"]:checked::after {
   border-radius: 1.5px;
   border-width: 0.5px;
   border-color: rgb(59, 130, 246);;
+}
+.Task-Function:hover{
+  background-color: rgb(4, 54, 124);
+  cursor: pointer;
 }
